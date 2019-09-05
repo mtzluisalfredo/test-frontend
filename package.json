@@ -1,0 +1,74 @@
+{
+  "name": "intela-challenge",
+  "version": "1.0.0",
+  "description": "Challenge for the front end developer's job",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --port 4040 --mode development --open",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "lint-all": "eslint '**/*.{js,scss}'",
+    "lint-js": "eslint src/",
+    "lint": "npm run lint-all && npm run lint-js",
+    "test-chrome": "BASE_URL=http://localhost:4040 testcafe chrome tests/ -e"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md,scss,yaml,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "author": "Luis Alfredo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^8.1.5",
+    "node-sass": "^4.12.0",
+    "prettier-eslint": "^9.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "testcafe": "^1.4.3",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.1.6"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-action-types": "^2.0.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.3.2",
+    "styled-is": "^1.3.0"
+  }
+}
